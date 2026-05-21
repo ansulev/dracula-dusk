@@ -60,6 +60,9 @@ Download or copy these three files anywhere. No repo required.
 
 # Preview changes without writing
 ./dracula-soft.sh --dry-run <theme-dir>
+
+# Single known dir — no registry needed (e.g. GTK in-place)
+rsync -a ~/.themes/Dracula/ ~/.themes/Dracula-Soft/ && ./dracula-soft.sh ~/.themes/Dracula-Soft
 ```
 
 The patcher:
