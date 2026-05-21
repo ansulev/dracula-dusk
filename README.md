@@ -1,126 +1,169 @@
-# Dracula Theme
+# Dracula Soft CE
 
-![Dracula](https://draculatheme.com/images/dracula.gif)
+A warmer, lower-chroma fork of [Dracula](https://draculatheme.com) designed for 10–14 h coding sessions.  
+Two scripts + one map file. No build system. Works on any existing Dracula theme directory.
 
-> The most famous theme ever created, available for [Visual Studio Code](https://draculatheme.com/visual-studio-code), [iTerm](https://draculatheme.com/iterm), [Vim](https://draculatheme.com/vim), [Sublime Text](https://draculatheme.com/sublime), [JetBrains](https://draculatheme.com/jetbrains), [Terminal.app](https://draculatheme.com/terminal-app), [Windows Terminal](https://draculatheme.com/windows-terminal), [Hyper](https://draculatheme.com/hyper), [Alfred](https://draculatheme.com/alfred), [Slack](https://draculatheme.com/slack), [Xcode](https://draculatheme.com/xcode), [Emacs](https://draculatheme.com/emacs), [Zsh](https://draculatheme.com/zsh), and [400+ more applications](https://draculatheme.com).
+---
 
-## Install
+## Why
 
-Find installation instructions for your application at [draculatheme.com](https://draculatheme.com). Search for your app or browse the [full list of themes](https://draculatheme.com).
+Dracula's original palette is vivid by design — great for screenshots, tiring after hours.  
+Soft CE keeps the same hue relationships but reduces chroma 30–40% on accents and shifts  
+the dark surfaces from blue-grey (HSL 231°) to warm brown-grey (38°).
 
-## Color Palette (OSS)
+---
 
-### Dracula
+## Palette
 
-| Palette      | Hex       | RGB           | HSL             | ![Color Picker Boxes](https://draculatheme.com/images/color-boxes/eyedropper.png)           |
-| ------------ | --------- | ------------- | --------------- | ------------------------------------------------------------------------------------------- |
-| Background   | `#282a36` | `40 42 54`    | `231° 15% 18%`  | ![Background Color](https://draculatheme.com/images/color-boxes/dracula-background.png)     |
-| Current Line | `#44475a` | `68 71 90`    | `232° 14% 31%`  | ![Current Line Color](https://draculatheme.com/images/color-boxes/dracula-current-line.png) |
-| Selection    | `#44475a` | `68 71 90`    | `232° 14% 31%`  | ![Selection Color](https://draculatheme.com/images/color-boxes/dracula-selection.png)       |
-| Foreground   | `#f8f8f2` | `248 248 242` | `60° 30% 96%`   | ![Foreground Color](https://draculatheme.com/images/color-boxes/dracula-foreground.png)     |
-| Comment      | `#6272a4` | `98 114 164`  | `225° 27% 51%`  | ![Comment Color](https://draculatheme.com/images/color-boxes/dracula-comment.png)           |
-| Cyan         | `#8be9fd` | `139 233 253` | `191° 97% 77%`  | ![Cyan Color](https://draculatheme.com/images/color-boxes/dracula-cyan.png)                 |
-| Green        | `#50fa7b` | `80 250 123`  | `135° 94% 65%`  | ![Green Color](https://draculatheme.com/images/color-boxes/dracula-green.png)               |
-| Orange       | `#ffb86c` | `255 184 108` | `31° 100% 71%`  | ![Orange Color](https://draculatheme.com/images/color-boxes/dracula-orange.png)             |
-| Pink         | `#ff79c6` | `255 121 198` | `326° 100% 74%` | ![Pink Color](https://draculatheme.com/images/color-boxes/dracula-pink.png)                 |
-| Purple       | `#bd93f9` | `189 147 249` | `265° 89% 78%`  | ![Purple Color](https://draculatheme.com/images/color-boxes/dracula-purple.png)             |
-| Red          | `#ff5555` | `255 85 85`   | `0° 100% 67%`   | ![Red Color](https://draculatheme.com/images/color-boxes/dracula-red.png)                   |
-| Yellow       | `#f1fa8c` | `241 250 140` | `65° 92% 76%`   | ![Yellow Color](https://draculatheme.com/images/color-boxes/dracula-yellow.png)             |
+| Role | Dracula | Soft CE | Change |
+|---|---|---|---|
+| Background | `#282a36` | `#312e29` | H:231→38°, S:15→9% — warm dark |
+| Current Line | `#44475a` | `#565148` | H:231→38°, warm grey |
+| Foreground | `#f8f8f2` | `#efeeec` | H:60→40°, S:30→9% — warm cream |
+| Comment | `#6272a4` | `#767d93` | S:27→12% — recedes |
+| Pink | `#ff79c6` | `#e890c3` | S:100→65% — dusty rose |
+| Purple | `#bd93f9` | `#c1a6e5` | S:89→55% — soft lavender |
+| Cyan | `#8be9fd` | `#a1dce7` | S:97→60% — soft sky |
+| Green | `#50fa7b` | `#73d68c` | S:94→55% — muted sage |
+| Yellow | `#f1fa8c` | `#e1e79f` | S:92→60% — soft yellow |
+| Orange | `#ffb86c` | `#eab781` | S:100→72% — muted amber |
+| Red | `#ff5555` | `#e17373` | S:100→65% — soft rose-red |
 
-### Alucard
+All contrasts meet WCAG 2.1 Level AA (≥ 4.5:1).
 
-| Palette      | Hex       | RGB           | HSL            | ![Color Picker Boxes](https://draculatheme.com/images/color-boxes/eyedropper.png)           |
-| ------------ | --------- | ------------- | -------------- | ------------------------------------------------------------------------------------------- |
-| Background   | `#fffbeb` | `255 251 235` | `48° 100% 96%` | ![Background Color](https://draculatheme.com/images/color-boxes/alucard-background.png)     |
-| Current Line | `#6c664b` | `108 102 75`  | `49° 18% 36%`  | ![Current Line Color](https://draculatheme.com/images/color-boxes/alucard-current-line.png) |
-| Selection    | `#cfcfde` | `207 207 222` | `240° 18% 84%` | ![Selection Color](https://draculatheme.com/images/color-boxes/alucard-selection.png)       |
-| Foreground   | `#1f1f1f` | `31 31 31`    | `0° 0% 12%`    | ![Foreground Color](https://draculatheme.com/images/color-boxes/alucard-foreground.png)     |
-| Comment      | `#6c664b` | `108 102 75`  | `49° 18% 36%`  | ![Comment Color](https://draculatheme.com/images/color-boxes/alucard-comment.png)           |
-| Cyan         | `#036a96` | `3 106 150`   | `198° 96% 30%` | ![Cyan Color](https://draculatheme.com/images/color-boxes/alucard-cyan.png)                 |
-| Green        | `#14710a` | `20 113 10`   | `114° 84% 24%` | ![Green Color](https://draculatheme.com/images/color-boxes/alucard-green.png)               |
-| Orange       | `#a34d14` | `163 77 20`   | `24° 78% 36%`  | ![Orange Color](https://draculatheme.com/images/color-boxes/alucard-orange.png)             |
-| Pink         | `#a3144d` | `163 20 77`   | `336° 78% 36%` | ![Pink Color](https://draculatheme.com/images/color-boxes/alucard-pink.png)                 |
-| Purple       | `#644ac9` | `100 74 201`  | `252° 54% 54%` | ![Purple Color](https://draculatheme.com/images/color-boxes/alucard-purple.png)             |
-| Red          | `#cb3a2a` | `203 58 42`   | `6° 66% 48%`   | ![Red Color](https://draculatheme.com/images/color-boxes/alucard-red.png)                   |
-| Yellow       | `#846e15` | `132 110 21`  | `48° 73% 30%`  | ![Yellow Color](https://draculatheme.com/images/color-boxes/alucard-yellow.png)             |
+---
 
-For more details about how to apply these different colors to represent different code symbols, please see the [Dracula Specification](https://draculatheme.com/spec).
+## Standalone use — three files only
 
-## Contribute
+```
+dracula-ce.sh     universal hex patcher — works on any directory
+palette.map       color map (editable)
+fetch-targets.sh  optional: discovers & patches your installed themes
+```
 
-Dracula Theme is an open-source project driven by and for the community. Most of the 400+ supported applications are community contributions.
+Download or copy these three files anywhere. No repo required.
 
-We want to support all available applications, but we don't have the capacity to do it all ourselves. That's why your contributions are essential.
+### Requirements
 
-### How to submit a new theme
+`bash` · `perl` · `rsync` (fetch-targets.sh only) · `git` (fetch-targets.sh fallback only)
 
-1. **Create a repository** using this [template](https://github.com/dracula/template).
+---
 
-   - Clone it or click "Use this template" on GitHub.
+## dracula-ce.sh — patch any directory
 
-2. **Build your theme** using the [Color Palette](#color-palette) above.
+```bash
+# Patch an existing Dracula theme directory in place
+./dracula-ce.sh <theme-dir>
 
-   - Follow the template structure and add your theme files.
+# Use a custom map file
+./dracula-ce.sh <theme-dir> /path/to/palette.map
 
-3. **Submit an issue** with a link to your repository.
-   - Once accepted, we'll move it to the Dracula organization and give you maintainer access.
+# Preview changes without writing
+./dracula-ce.sh --dry-run <theme-dir>
+```
 
-For detailed guidelines and specifications, visit our [Contribute page](https://draculatheme.com/contribute).
+The patcher:
+- Replaces every `#rrggbb` / `#RRGGBB` (case-insensitive)
+- Replaces bare `rrggbb` (no `#`, e.g. foot, Xresources) with word-boundary guard
+- Replaces `rgba(rrggbbAA)` preserving the alpha (Hyprland borders)
+- Replaces Qt5/Qt6 `#ffrrggbb` ARGB 8-digit format
+- Skips binary files automatically
+- Runs on: `.css .scss .svg .json .yml .yaml .toml .xml .html .conf .ini .cfg`  
+  `.sh .lua .vim .rasi .kdl .ron .theme .colors .colorscheme .js .ts .md .txt`  
+  `Xresources .Xresources Xdefaults`
 
-## FAQ
+---
 
-**"Are you going to support editor X?"**
+## palette.map format
 
-We'd love to! Since you're already using that editor, you're probably more familiar with it than we are. Give it a try and [submit your theme](https://draculatheme.com/contribute)!
+```
+; comment (any line without = is skipped)
+#rrggbb=#rrggbb      standard 6-digit hex pair
+#ffrrggbb=#ffrrggbb  Qt5/Qt6 ARGB 8-digit
+```
 
-## Accessibility [![W3C](https://img.shields.io/badge/WCAG_2.1_|_AA-B695F3?logo=w3c&logoColor=fff&style=flat-square)](https://www.w3.org/TR/WCAG21/#contrast-minimum)
+Matching is **case-insensitive**. Values are always written lowercase.  
+Add or override entries freely — the map is the single source of truth.
 
-The colors maintain a `4.5:1` contrast ratio, complying with [WCAG 2.1 | Level AA](https://www.w3.org/TR/WCAG21/#contrast-minimum).
+---
 
-## Team
+## fetch-targets.sh — discover, copy, patch
 
-Dracula was created by [Zeno Rocha](https://github.com/zenorocha/) and is maintained with the help of many contributors. [Lucas de França](https://github.com/luxonauta) joined as co-maintainer in April 2022. Each theme has its maintainer listed in its repository's README.
+Finds your installed Dracula themes on the system, copies them to `targets/<app>/`,  
+and applies the CE palette. Falls back to `git clone` from GitHub for apps not yet installed.
 
-| [![Zeno Rocha](https://github.com/zenorocha.png?size=100)](https://github.com/zenorocha) | [![Lucas de França](https://github.com/luxonauta.png?size=100)](https://github.com/luxonauta) |
-| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [Zeno Rocha](https://github.com/zenorocha)                                               | [Lucas de França](https://github.com/luxonauta)                                               |
+```bash
+./fetch-targets.sh --list             # show all known apps and resolved source paths
+./fetch-targets.sh --dry-run          # preview without touching anything
+./fetch-targets.sh                    # fetch + patch tier-1 apps
+./fetch-targets.sh --all              # tier-1 + tier-2
+./fetch-targets.sh alacritty gtk rofi # specific apps
+```
 
-## Organization
+### Tier 1 (core)
 
-As Dracula grew to support 400+ applications, we moved from a single repository to a GitHub organization. Each theme now has its own repository, which makes it easier to:
+| App | Source |
+|---|---|
+| `vim` | vim + neovim (shared plugin) |
+| `visual-studio-code` | `~/.vscode/extensions/dracula-theme.*` |
+| `alacritty` | `~/.config/alacritty/themes` |
+| `kitty` | `~/.config/kitty` |
+| `foot` | `~/.config/foot` |
+| `gtk` | `~/.themes/Dracula` or `/usr/share/themes/Dracula` |
+| `gtksourceview` | `/usr/share/gtksourceview-{4,5}/styles` |
+| `qt5` | `~/.config/qt5ct/colors` |
+| `hyprland` | `~/.config/hypr` |
+| `waybar` | `~/.config/waybar` |
+| `rofi` | `~/.config/rofi` |
+| `openbox` | `~/.themes/Dracula-openbox` or `/usr/share/themes/Dracula` |
 
-- Support different package managers
-- List maintainers for each theme
-- Find installation instructions
-- Release updates independently
+### Tier 2
 
-Browse all themes in the [Dracula organization](https://github.com/dracula).
+`zsh` `zsh-syntax-highlighting` `zellij` `zed` `sublime` `typora`  
+`lxterminal` `xfce4-terminal` `dmenu` `eclipse` `dracula-css`
 
-## Community
+### Applying a patched theme
 
-- [Contribute](https://draculatheme.com/contribute) - Learn how to create and submit themes
-- [Twitter](https://twitter.com/draculatheme) - Get updates and announcements
-- [GitHub Discussions](https://github.com/dracula/dracula-theme/discussions) - Ask questions and discuss
-- [Discord](https://draculatheme.com/discord-invite) - Chat with the community
+The script copies the **source directory** to `targets/<app>/` and patches it there.  
+Your live config is not modified. Copy back only the relevant files:
 
-## Dracula PRO
+```bash
+# Example: alacritty
+cp targets/alacritty/dracula.toml ~/.config/alacritty/themes/dracula-ce.toml
 
-Dracula PRO is a premium color scheme and UI theme designed for programming. It includes additional variants and features for terminal emulators, code editors, and syntax highlighters.
+# Example: gtk (as root or via symlink)
+cp -r targets/gtk/ ~/.themes/Dracula-CE/
 
-[![Dracula PRO](./.github/dracula-pro.png)](https://draculatheme.com/pro)
+# Example: hyprland — only the color definitions file
+cp targets/hyprland/dracula_colors.conf ~/.config/hypr/dracula_ce_colors.conf
+```
 
-## Credits
+---
 
-Special thanks to the creators who inspired the beginning of Dracula:
+## Format support
 
-- [@chenluois](http://mouapp.com/) for the color palette inspiration
-- [@aziz](http://tmtheme-editor.herokuapp.com/) for the theme editor tools
-- [@robbyrussell](https://github.com/robbyrussell) for the shell theme foundation
+| Format | Examples | Status |
+|---|---|---|
+| `#rrggbb` hex | GTK, VSCode, Rofi, Vim, Alacritty | ✅ |
+| bare `rrggbb` | Foot, Dmenu, Xresources | ✅ |
+| `rgb(rrggbb)` | Hyprland variables | ✅ |
+| `rgba(rrggbbAA)` | Hyprland borders (alpha preserved) | ✅ |
+| `#ffrrggbb` ARGB | Qt5ct / Qt6ct color schemes | ✅ |
+| ANSI escape codes | FZF, EZA, EXA, dircolors | ❌ not hex |
+| `0xBBGGRR` BGR | Geany colorschemes | ❌ byte-reversed |
 
-## Changelog
+---
 
-The changelog is available on the release page in each theme's repository.
+## Extending
 
-## License
+To add a new app or override a color, edit `palette.map` and re-run the patcher:
 
-[MIT License](./LICENSE) © Dracula Theme
+```bash
+# Edit palette.map, then re-patch all targets
+for d in targets/*/; do ./dracula-ce.sh "$d"; done
+
+# Or a single app
+./dracula-ce.sh targets/alacritty
+```
+
+To add a system path for a new app, edit the `APP_SOURCES` block in `fetch-targets.sh`.
