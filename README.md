@@ -1,4 +1,4 @@
-# Dracula Soft CE
+# Dracula-Soft
 
 A warmer, lower-chroma fork of [Dracula](https://draculatheme.com) designed for 10–14 h coding sessions.  
 Two scripts + one map file. No build system. Works on any existing Dracula theme directory.
@@ -8,14 +8,14 @@ Two scripts + one map file. No build system. Works on any existing Dracula theme
 ## Why
 
 Dracula's original palette is vivid by design — great for screenshots, tiring after hours.  
-Soft CE keeps the same hue relationships but reduces chroma 30–40% on accents and shifts  
+Dracula-Soft keeps the same hue relationships but reduces chroma 30–40% on accents and shifts  
 the dark surfaces from blue-grey (HSL 231°) to warm brown-grey (38°).
 
 ---
 
 ## Palette
 
-| Role | Dracula | Soft CE | Change |
+| Role | Dracula | Dracula-Soft | Change |
 |---|---|---|---|
 | Background | `#282a36` | `#312e29` | H:231→38°, S:15→9% — warm dark |
 | Current Line | `#44475a` | `#565148` | H:231→38°, warm grey |
@@ -36,7 +36,7 @@ All contrasts meet WCAG 2.1 Level AA (≥ 4.5:1).
 ## Standalone use — three files only
 
 ```
-dracula-ce.sh     universal hex patcher — works on any directory
+dracula-soft.sh     universal hex patcher — works on any directory
 palette.map       color map (editable)
 fetch-targets.sh  optional: discovers & patches your installed themes
 ```
@@ -49,17 +49,17 @@ Download or copy these three files anywhere. No repo required.
 
 ---
 
-## dracula-ce.sh — patch any directory
+## dracula-soft.sh — patch any directory
 
 ```bash
 # Patch an existing Dracula theme directory in place
-./dracula-ce.sh <theme-dir>
+./dracula-soft.sh <theme-dir>
 
 # Use a custom map file
-./dracula-ce.sh <theme-dir> /path/to/palette.map
+./dracula-soft.sh <theme-dir> /path/to/palette.map
 
 # Preview changes without writing
-./dracula-ce.sh --dry-run <theme-dir>
+./dracula-soft.sh --dry-run <theme-dir>
 ```
 
 The patcher:
@@ -90,7 +90,7 @@ Add or override entries freely — the map is the single source of truth.
 ## fetch-targets.sh — discover, copy, patch
 
 Finds your installed Dracula themes on the system, copies them to `targets/<app>/`,  
-and applies the CE palette. Falls back to `git clone` from GitHub for apps not yet installed.
+and applies the Dracula-Soft palette. Falls back to `git clone` from GitHub for apps not yet installed.
 
 ```bash
 ./fetch-targets.sh --list             # show all known apps and resolved source paths
@@ -125,17 +125,17 @@ and applies the CE palette. Falls back to `git clone` from GitHub for apps not y
 ### Applying a patched theme
 
 The script copies the **source directory** to `targets/<app>/` and patches it there.  
-Your live config is not modified. Copy back only the relevant files:
+Apps with a deploy path defined (`gtk`, `openbox`) are written to `~/.themes/Dracula-Soft/`
+automatically. All others require a manual copy:
 
 ```bash
 # Example: alacritty
-cp targets/alacritty/dracula.toml ~/.config/alacritty/themes/dracula-ce.toml
+cp targets/alacritty/dracula.toml ~/.config/alacritty/themes/dracula-soft.toml
 
-# Example: gtk (as root or via symlink)
-cp -r targets/gtk/ ~/.themes/Dracula-CE/
+# gtk and openbox — auto-deployed to ~/.themes/Dracula-Soft/ (no manual step)
 
 # Example: hyprland — only the color definitions file
-cp targets/hyprland/dracula_colors.conf ~/.config/hypr/dracula_ce_colors.conf
+cp targets/hyprland/dracula_colors.conf ~/.config/hypr/dracula_soft_colors.conf
 ```
 
 ---
@@ -160,10 +160,10 @@ To add a new app or override a color, edit `palette.map` and re-run the patcher:
 
 ```bash
 # Edit palette.map, then re-patch all targets
-for d in targets/*/; do ./dracula-ce.sh "$d"; done
+for d in targets/*/; do ./dracula-soft.sh "$d"; done
 
 # Or a single app
-./dracula-ce.sh targets/alacritty
+./dracula-soft.sh targets/alacritty
 ```
 
 To add a system path for a new app, edit the `APP_SOURCES` block in `fetch-targets.sh`.

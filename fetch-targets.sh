@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# fetch-targets.sh — populate targets/ with CE-patched Dracula theme files
+# fetch-targets.sh — populate targets/ with Dracula-Soft patched theme files
 #
 # Source priority per app:
 #   1. Existing installed files in user's ~/.config / ~/.themes / /usr/share
@@ -11,8 +11,8 @@
 #   ./fetch-targets.sh                      # runs tier1 apps
 #   ./fetch-targets.sh --all               # runs tier1 + tier2 apps
 #
-# After populating targets/<app>/, apply the CE palette:
-#   ./dracula-ce.sh targets/<app>/
+# After populating targets/<app>/, apply the Dracula-Soft palette:
+#   ./dracula-soft.sh targets/<app>/
 #
 # Apps marked [ANSI] are skipped: their colors are ANSI escape codes, not hex.
 # Apps marked [BGR]  are skipped: Geany uses BGR byte-reversed hex — patch manually.
@@ -20,7 +20,7 @@ set -euo pipefail
 
 readonly REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly TARGETS_DIR="${REPO_DIR}/targets"
-readonly PATCHER="${REPO_DIR}/dracula-ce.sh"
+readonly PATCHER="${REPO_DIR}/dracula-soft.sh"
 readonly MAP="${REPO_DIR}/palette.map"
 
 log()  { echo "[$(date '+%H:%M:%S')] $*"; }
@@ -65,8 +65,8 @@ declare -A APP_SOURCES=(
   [rofi]="themes/rofi
     ${HOME}/.config/rofi"
   [openbox]="themes/openbox
-    ${HOME}/.themes/Dracula-openbox
-    /usr/share/themes/Dracula"
+    ${HOME}/.themes/Dracula/openbox-3
+    /usr/share/themes/Dracula/openbox-3"
   # ── Tier 2 ────────────────────────────────────────────────────────────────
   [zsh]="themes/zsh
     ${HOME}/.oh-my-zsh/themes
@@ -102,6 +102,13 @@ TIER1=(vim visual-studio-code alacritty kitty foot gtk gtksourceview qt5
        hyprland waybar rofi openbox)
 TIER2=(zsh zsh-syntax-highlighting zellij zed sublime typora
        lxterminal xfce4-terminal dmenu eclipse dracula-css)
+
+# Deploy targets: after patching, rsync targets/<app>/ to this path.
+# Only defined for apps where automatic deployment makes sense.
+declare -A DEPLOY_PATHS=(
+  [gtk]="${HOME}/.themes/Dracula-Soft"
+  [openbox]="${HOME}/.themes/Dracula-Soft/openbox-3"
+)
 
 DRY_RUN=false
 RUN_ALL=false
@@ -212,12 +219,21 @@ fetch_app() {
   if [[ "$DRY_RUN" == true ]]; then
     info "would rsync: ${src}/ -> ${dest}/"
     info "would patch: ${dest}/"
+    local _deploy="${DEPLOY_PATHS[$app]:-}"
+    [[ -n "$_deploy" ]] && info "would deploy: ${dest}/ -> ${_deploy}/"
     return
   fi
 
   mkdir -p "${dest}"
   rsync -a --delete "${src%/}/" "${dest}/"
   "${PATCHER}" "${dest}" "${MAP}"
+
+  local deploy="${DEPLOY_PATHS[$app]:-}"
+  if [[ -n "$deploy" ]]; then
+    log "DEPLOY $app -> ${deploy}"
+    mkdir -p "${deploy}"
+    rsync -a --delete "${dest}/" "${deploy}/"
+  fi
 }
 
 # ---------------------------------------------------------------------------

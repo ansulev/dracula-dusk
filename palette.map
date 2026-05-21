@@ -1,4 +1,4 @@
-; Dracula -> Dracula Soft CE -- canonical color map
+; Dracula -> Dracula-Soft -- canonical color map
 ; Strategy:
 ;   Surfaces: hue 231 (blue-grey) -> 38 (warm brown-grey), S -40%
 ;   Foreground: hue 60 kept warm, S 30%->8%, L 96%->93% (cream)
@@ -8,7 +8,7 @@
 ; Format:  #rrggbb=#rrggbb  (hex lowercase; patcher is case-insensitive)
 ; Comment: lines starting with ; are skipped; lines without = are skipped
 ;
-; Run:     ./dracula-ce.sh <theme-dir>
+; Run:     ./dracula-soft.sh <theme-dir>
 
 ; -- Surfaces -----------------------------------------------------------------
 #282a36=#312e29   ; Background    H:231->38, S:15->9%  -- warm dark brown-grey
