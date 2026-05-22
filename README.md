@@ -18,9 +18,9 @@ feel with barely-there current-line lift, while keeping all accents soft for lon
 
 | Role | Dracula | Dracula-Soft | Change |
 |---|---|---|---|
-| Background | `#282a36` | `#22212c` | H:246°, S:6%, L:15% — Pro Dark near-black |
-| Current Line | `#44475a` | `#2d2b3a` | H:248°, S:10%, L:20% — barely-there lift |
-| Foreground | `#f8f8f2` | `#efeeec` | H:60→40°, S:30→9% — warm cream |
+| Background | `#282a36` | `#272538` | H:246°, S:10%, L:18% — soft purple-dark |
+| Current Line | `#44475a` | `#302e45` | H:248°, S:10%, L:22% — barely-there lift |
+| Foreground | `#f8f8f2` | `#c8c5be` | H:40°, S:4%, L:76% — dim warm grey |
 | Comment | `#6272a4` | `#767d93` | S:27→12% — recedes |
 | Pink | `#ff79c6` | `#e890c3` | S:100→65% — dusty rose |
 | Purple | `#bd93f9` | `#c1a6e5` | S:89→55% — soft lavender |

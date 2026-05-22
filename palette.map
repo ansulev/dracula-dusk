@@ -1,7 +1,7 @@
 ; Dracula -> Dracula-Soft -- canonical color map
 ; Strategy:
-;   Surfaces: Pro Dark inspired -- very dark near-black purple, H:246-253 family
-;   Foreground: hue 60->40, S 30%->9%, L 96%->93% (warm cream)
+;   Surfaces: soft purple-dark, H:246-253 family, L:14-22% (≈original Dracula depth)
+;   Foreground: H:40, S:4%, L:76% -- dim warm grey, reduced contrast for long sessions
 ;   Comment: keep hue ~225, S 27%->12% (recedes without vanishing)
 ;   Accents: same hue, chroma reduced 30-40%, same lightness
 ;   GTK selection pink override: see palette.gtk.map (second pass)
@@ -12,15 +12,15 @@
 ; Run:     ./dracula-soft.sh <theme-dir>
 
 ; -- Surfaces -----------------------------------------------------------------
-#1e1f29=#1b1a24   ; GTK header/panel bg  H:252, S:13%, L:12% -- near-black purple
-#232530=#201f2a   ; OB secondary surface H:253, S:12%, L:14% -- dark layer (themerc)
-#282a36=#22212c   ; Background    H:246, S:6%,  L:15% -- Pro Dark near-black
-#44475a=#2d2b3a   ; Current Line  H:248, S:10%, L:20% -- subtle lift, barely-there
+#1e1f29=#1e1d2c   ; GTK header/panel bg  H:248, S:13%, L:14% -- deep purple-dark
+#232530=#242232   ; OB secondary surface H:248, S:12%, L:16% -- dark layer (themerc)
+#282a36=#272538   ; Background    H:246, S:10%, L:18% -- soft purple-dark (≈original)
+#44475a=#302e45   ; Current Line  H:248, S:10%, L:22% -- subtle lift, barely-there
 ; NOTE: Selection and Current Line share the same token in most themes.
 ; GTK selected_bg_color (pink) is handled by palette.gtk.map second pass.
 
 ; -- Text ---------------------------------------------------------------------
-#f8f8f2=#efeeec   ; Foreground    H:60->40, S:30->9%   -- warm cream (NOT blue/purple)
+#f8f8f2=#c8c5be   ; Foreground    H:40, S:4%, L:76%    -- warm dim grey, -blanc (NOT blue/purple)
 #6272a4=#767d93   ; Comment       H:225, S:27->12%     -- muted, recedes
 
 ; -- Accents: same hue, same lightness, chroma -30 to -40% -------------------
@@ -36,11 +36,11 @@
 ; The 6-digit entries above do NOT match these: the 'ff' alpha prefix sits
 ; adjacent to the color hex, so the word-boundary lookahead/lookbehind blocks
 ; the bare-hex pattern. These entries handle that explicitly.
-#ff1e1f29=#ff1b1a24
-#ff232530=#ff201f2a
-#ff282a36=#ff22212c
-#ff44475a=#ff2d2b3a
-#fff8f8f2=#ffefeeec
+#ff1e1f29=#ff1e1d2c
+#ff232530=#ff242232
+#ff282a36=#ff272538
+#ff44475a=#ff302e45
+#fff8f8f2=#ffc8c5be
 #ff6272a4=#ff767d93
 #ffff79c6=#ffe890c3
 #ffbd93f9=#ffc1a6e5
