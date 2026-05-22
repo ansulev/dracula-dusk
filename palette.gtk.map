@@ -1,0 +1,12 @@
+; palette.gtk.map — Dracula-Soft GTK-specific overrides
+; Apply as a SECOND PASS after palette.map, GTK files only.
+;
+; Why: Dracula's GTK theme uses Pink (#ff79c6) as selected_bg_color — a design
+; choice that reads as vivid accent-on-accent in Dracula-Soft. This pass
+; replaces the soft-pink selection with a muted plum that harmonises with
+; the warm dark-purple surfaces.
+;
+; #6b5f8e — H:255, S:20%, L:46% — 5.5:1 contrast vs #f8f8f8 (WCAG AA ✓)
+
+; Pink (already softened to #e890c3 by palette.map) -> muted plum
+#e890c3=#6b5f8e
