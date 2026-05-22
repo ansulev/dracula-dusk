@@ -9,7 +9,8 @@ Two scripts + one map file. No build system. Works on any existing Dracula theme
 
 Dracula's original palette is vivid by design — great for screenshots, tiring after hours.  
 Dracula-Soft keeps the same hue relationships but reduces chroma 30–40% on accents and shifts  
-the dark surfaces from blue-grey (HSL 231°) to warm brown-grey (38°).
+the dark surfaces toward Pro Dark near-black purple (HSL 246–252°, L:12–20%) — premium midnight  
+feel with barely-there current-line lift, while keeping all accents soft for long sessions.
 
 ---
 
@@ -17,8 +18,8 @@ the dark surfaces from blue-grey (HSL 231°) to warm brown-grey (38°).
 
 | Role | Dracula | Dracula-Soft | Change |
 |---|---|---|---|
-| Background | `#282a36` | `#312e29` | H:231→38°, S:15→9% — warm dark |
-| Current Line | `#44475a` | `#565148` | H:231→38°, warm grey |
+| Background | `#282a36` | `#22212c` | H:246°, S:6%, L:15% — Pro Dark near-black |
+| Current Line | `#44475a` | `#2d2b3a` | H:248°, S:10%, L:20% — barely-there lift |
 | Foreground | `#f8f8f2` | `#efeeec` | H:60→40°, S:30→9% — warm cream |
 | Comment | `#6272a4` | `#767d93` | S:27→12% — recedes |
 | Pink | `#ff79c6` | `#e890c3` | S:100→65% — dusty rose |
@@ -36,9 +37,10 @@ All contrasts meet WCAG 2.1 Level AA (≥ 4.5:1).
 ## Standalone use — three files only
 
 ```
-dracula-soft.sh     universal hex patcher — works on any directory
-palette.map       color map (editable)
-fetch-targets.sh  optional: discovers & patches your installed themes
+dracula-soft.sh      universal hex patcher — works on any directory
+palette.map          color map (editable)
+palette.gtk.map      GTK-specific second pass (selection pink → muted plum)
+fetch-targets.sh     optional: discovers & patches your installed themes
 ```
 
 Download or copy these three files anywhere. No repo required.

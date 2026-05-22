@@ -22,6 +22,7 @@ readonly REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly TARGETS_DIR="${REPO_DIR}/targets"
 readonly PATCHER="${REPO_DIR}/dracula-soft.sh"
 readonly MAP="${REPO_DIR}/palette.map"
+readonly GTK_MAP="${REPO_DIR}/palette.gtk.map"
 
 log()  { echo "[$(date '+%H:%M:%S')] $*"; }
 die()  { echo "[ERROR] $*" >&2; exit 1; }
@@ -48,6 +49,7 @@ declare -A APP_SOURCES=(
   [foot]="themes/foot
     ${HOME}/.config/foot"
   [gtk]="themes/gtk
+    ${REPO_DIR}/../gtk-themes/archcraft-gtk-theme-dracula/files/Dracula
     ${HOME}/.themes/Dracula
     /usr/share/themes/Dracula"
   [gtksourceview]="themes/gtksourceview
@@ -65,8 +67,11 @@ declare -A APP_SOURCES=(
   [rofi]="themes/rofi
     ${HOME}/.config/rofi"
   [openbox]="themes/openbox
+    ${REPO_DIR}/../labwc-themes/OB-Dracula/openbox-3
     ${HOME}/.themes/Dracula/openbox-3
     /usr/share/themes/Dracula/openbox-3"
+  [labwc-config]="themes/labwc-config
+    ${REPO_DIR}/../labwc-config/files"
   # ── Tier 2 ────────────────────────────────────────────────────────────────
   [zsh]="themes/zsh
     ${HOME}/.oh-my-zsh/themes
@@ -99,7 +104,7 @@ declare -A APP_SOURCES=(
 )
 
 TIER1=(vim visual-studio-code alacritty kitty foot gtk gtksourceview qt5
-       hyprland waybar rofi openbox)
+       hyprland waybar rofi openbox labwc-config)
 TIER2=(zsh zsh-syntax-highlighting zellij zed sublime typora
        lxterminal xfce4-terminal dmenu eclipse dracula-css)
 
@@ -108,6 +113,12 @@ TIER2=(zsh zsh-syntax-highlighting zellij zed sublime typora
 declare -A DEPLOY_PATHS=(
   [gtk]="${HOME}/.themes/Dracula-Soft"
   [openbox]="${HOME}/.themes/Dracula-Soft/openbox-3"
+)
+
+# Paths to exclude from --delete during deployment (space-separated relative paths).
+# Use when multiple apps share the same deploy parent directory.
+declare -A DEPLOY_EXCLUDES=(
+  [gtk]="openbox-3"
 )
 
 DRY_RUN=false
@@ -228,11 +239,19 @@ fetch_app() {
   rsync -a --delete "${src%/}/" "${dest}/"
   "${PATCHER}" "${dest}" "${MAP}"
 
+  # GTK second pass: replace selection pink with muted plum (palette.gtk.map)
+  if [[ "$app" == "gtk" ]] && [[ -f "${GTK_MAP}" ]]; then
+    "${PATCHER}" "${dest}" "${GTK_MAP}"
+  fi
+
   local deploy="${DEPLOY_PATHS[$app]:-}"
   if [[ -n "$deploy" ]]; then
     log "DEPLOY $app -> ${deploy}"
     mkdir -p "${deploy}"
-    rsync -a --delete "${dest}/" "${deploy}/"
+    local excl_args=()
+    local excl="${DEPLOY_EXCLUDES[$app]:-}"
+    for e in $excl; do excl_args+=(--exclude="$e"); done
+    rsync -a --delete "${excl_args[@]}" "${dest}/" "${deploy}/"
   fi
 }
 

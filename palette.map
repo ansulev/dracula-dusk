@@ -1,9 +1,10 @@
 ; Dracula -> Dracula-Soft -- canonical color map
 ; Strategy:
-;   Surfaces: hue 231 (blue-grey) -> 38 (warm brown-grey), S -40%
-;   Foreground: hue 60 kept warm, S 30%->8%, L 96%->93% (cream)
+;   Surfaces: Pro Dark inspired -- very dark near-black purple, H:246-253 family
+;   Foreground: hue 60->40, S 30%->9%, L 96%->93% (warm cream)
 ;   Comment: keep hue ~225, S 27%->12% (recedes without vanishing)
 ;   Accents: same hue, chroma reduced 30-40%, same lightness
+;   GTK selection pink override: see palette.gtk.map (second pass)
 ;
 ; Format:  #rrggbb=#rrggbb  (hex lowercase; patcher is case-insensitive)
 ; Comment: lines starting with ; are skipped; lines without = are skipped
@@ -11,10 +12,12 @@
 ; Run:     ./dracula-soft.sh <theme-dir>
 
 ; -- Surfaces -----------------------------------------------------------------
-#282a36=#312e29   ; Background    H:231->38, S:15->9%  -- warm dark brown-grey
-#44475a=#565148   ; Current Line  H:231->38, S:14->9%  -- warm selection grey
+#1e1f29=#1b1a24   ; GTK header/panel bg  H:252, S:13%, L:12% -- near-black purple
+#232530=#201f2a   ; OB secondary surface H:253, S:12%, L:14% -- dark layer (themerc)
+#282a36=#22212c   ; Background    H:246, S:6%,  L:15% -- Pro Dark near-black
+#44475a=#2d2b3a   ; Current Line  H:248, S:10%, L:20% -- subtle lift, barely-there
 ; NOTE: Selection and Current Line share the same token in most themes.
-; If a theme differentiates them, add a second entry here.
+; GTK selected_bg_color (pink) is handled by palette.gtk.map second pass.
 
 ; -- Text ---------------------------------------------------------------------
 #f8f8f2=#efeeec   ; Foreground    H:60->40, S:30->9%   -- warm cream (NOT blue/purple)
@@ -33,8 +36,10 @@
 ; The 6-digit entries above do NOT match these: the 'ff' alpha prefix sits
 ; adjacent to the color hex, so the word-boundary lookahead/lookbehind blocks
 ; the bare-hex pattern. These entries handle that explicitly.
-#ff282a36=#ff312e29
-#ff44475a=#ff565148
+#ff1e1f29=#ff1b1a24
+#ff232530=#ff201f2a
+#ff282a36=#ff22212c
+#ff44475a=#ff2d2b3a
 #fff8f8f2=#ffefeeec
 #ff6272a4=#ff767d93
 #ffff79c6=#ffe890c3

@@ -31,7 +31,7 @@ Matching covers:
 File types patched (text files only; binaries are silently skipped):
   css scss sass less svg json yml yaml toml xml html htm conf ini cfg
   properties sh lua vim vimrc rasi kdl ron theme colors colorscheme
-  js ts tsx jsx md txt Xresources .Xresources Xdefaults
+  js ts tsx jsx md txt Xresources .Xresources Xdefaults themerc
 EOF
   exit 1
 }
@@ -138,6 +138,7 @@ find "$ROOT" \
     -o -name "*.js"   -o -name "*.ts"   -o -name "*.tsx"   -o -name "*.jsx"  \
     -o -name "*.md"   -o -name "*.txt"  \
     -o -name "Xresources" -o -name ".Xresources" -o -name "Xdefaults" \
+    -o -name "themerc" \
     \) -print0 \) > "$tmp_files"
 
 # ── Apply substitutions ───────────────────────────────────────────────────────
