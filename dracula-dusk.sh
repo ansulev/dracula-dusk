@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# dracula-soft.sh — patch a Dracula theme directory with the Dracula-Soft palette
+# dracula-dusk.sh — patch a Dracula theme directory with the Dracula Dusk palette
 set -euo pipefail
 
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -12,7 +12,7 @@ usage() {
   cat >&2 <<EOF
 Usage: $(basename "$0") [--dry-run] <theme-dir> [palette.map]
 
-Replace every Dracula hex color found in <theme-dir> with its Dracula-Soft
+Replace every Dracula hex color found in <theme-dir> with its Dracula Dusk
 equivalent defined in the palette map.
 
   --dry-run / -n   Show which files would change; do not modify them.

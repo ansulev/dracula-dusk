@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# fetch-targets.sh — populate targets/ with Dracula-Soft patched theme files
+# fetch-targets.sh — populate targets/ with Dracula Dusk patched theme files
 #
 # Source priority per app:
 #   1. Existing installed files in user's ~/.config / ~/.themes / /usr/share
@@ -11,8 +11,8 @@
 #   ./fetch-targets.sh                      # runs tier1 apps
 #   ./fetch-targets.sh --all               # runs tier1 + tier2 apps
 #
-# After populating targets/<app>/, apply the Dracula-Soft palette:
-#   ./dracula-soft.sh targets/<app>/
+# After populating targets/<app>/, apply the Dracula Dusk palette:
+#   ./dracula-dusk.sh targets/<app>/
 #
 # Apps marked [ANSI] are skipped: their colors are ANSI escape codes, not hex.
 # Apps marked [BGR]  are skipped: Geany uses BGR byte-reversed hex — patch manually.
@@ -20,7 +20,7 @@ set -euo pipefail
 
 readonly REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly TARGETS_DIR="${REPO_DIR}/targets"
-readonly PATCHER="${REPO_DIR}/dracula-soft.sh"
+readonly PATCHER="${REPO_DIR}/dracula-dusk.sh"
 readonly MAP="${REPO_DIR}/palette.map"
 readonly GTK_MAP="${REPO_DIR}/palette.gtk.map"
 
@@ -111,8 +111,8 @@ TIER2=(zsh zsh-syntax-highlighting zellij zed sublime typora
 # Deploy targets: after patching, rsync targets/<app>/ to this path.
 # Only defined for apps where automatic deployment makes sense.
 declare -A DEPLOY_PATHS=(
-  [gtk]="${HOME}/.themes/Dracula-Soft"
-  [openbox]="${HOME}/.themes/Dracula-Soft/openbox-3"
+  [gtk]="${HOME}/.themes/Dracula-Dusk"
+  [openbox]="${HOME}/.themes/Dracula-Dusk/openbox-3"
 )
 
 # Paths to exclude from --delete during deployment (space-separated relative paths).
@@ -173,9 +173,12 @@ resolve_source() {
     done
   done
 
-  # Fall back to submodule
+  # Fall back to submodule only if already initialised
   local submod="$first_line"
-  [[ -n "$submod" ]] && { echo "${REPO_DIR}/${submod}"; return 0; }
+  if [[ -n "$submod" ]] && [[ -e "${REPO_DIR}/${submod}" ]]; then
+    echo "${REPO_DIR}/${submod}"
+    return 0
+  fi
 
   return 1
 }
@@ -230,6 +233,9 @@ fetch_app() {
   if [[ "$DRY_RUN" == true ]]; then
     info "would rsync: ${src}/ -> ${dest}/"
     info "would patch: ${dest}/"
+    if [[ "$app" == "gtk" ]] && [[ -f "${GTK_MAP}" ]]; then
+      info "would patch (gtk.map): ${dest}/"
+    fi
     local _deploy="${DEPLOY_PATHS[$app]:-}"
     [[ -n "$_deploy" ]] && info "would deploy: ${dest}/ -> ${_deploy}/"
     return
@@ -239,7 +245,7 @@ fetch_app() {
   rsync -a --delete "${src%/}/" "${dest}/"
   "${PATCHER}" "${dest}" "${MAP}"
 
-  # GTK second pass: replace selection pink with muted plum (palette.gtk.map)
+  # GTK second pass: dark-purple selection override (palette.gtk.map)
   if [[ "$app" == "gtk" ]] && [[ -f "${GTK_MAP}" ]]; then
     "${PATCHER}" "${dest}" "${GTK_MAP}"
   fi

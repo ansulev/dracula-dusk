@@ -1,4 +1,4 @@
-; Dracula -> Dracula-Soft -- canonical color map
+; Dracula -> Dracula Dusk -- canonical color map
 ; Strategy:
 ;   Surfaces: soft purple-dark, H:246-253 family, L:14-22% (≈original Dracula depth)
 ;   Foreground: H:40, S:4%, L:76% -- dim warm grey, reduced contrast for long sessions
@@ -9,7 +9,7 @@
 ; Format:  #rrggbb=#rrggbb  (hex lowercase; patcher is case-insensitive)
 ; Comment: lines starting with ; are skipped; lines without = are skipped
 ;
-; Run:     ./dracula-soft.sh <theme-dir>
+; Run:     ./dracula-dusk.sh <theme-dir>
 
 ; -- Surfaces -----------------------------------------------------------------
 #1e1f29=#1e1d2c   ; GTK header/panel bg  H:248, S:13%, L:14% -- deep purple-dark
@@ -21,7 +21,7 @@
 
 ; -- Text ---------------------------------------------------------------------
 #f8f8f2=#c8c5be   ; Foreground    H:40, S:4%, L:76%    -- warm dim grey, -blanc (NOT blue/purple)
-#6272a4=#767d93   ; Comment       H:225, S:27->12%     -- muted, recedes
+#6272a4=#878ea1   ; Comment       H:225, S:27->12%, L:52->58%  -- muted, recedes; WCAG AA 4.56:1
 
 ; -- Accents: same hue, same lightness, chroma -30 to -40% -------------------
 #ff79c6=#e890c3   ; Pink     S:100->65%  -- dusty rose
@@ -41,7 +41,7 @@
 #ff282a36=#ff272538
 #ff44475a=#ff302e45
 #fff8f8f2=#ffc8c5be
-#ff6272a4=#ff767d93
+#ff6272a4=#ff878ea1
 #ffff79c6=#ffe890c3
 #ffbd93f9=#ffc1a6e5
 #ff8be9fd=#ffa1dce7
